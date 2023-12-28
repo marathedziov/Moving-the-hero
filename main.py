@@ -5,16 +5,15 @@ from map import generate_level
 
 FPS = 50
 
-
-
-
 pygame.init()
 size = width, height = 500, 500
 screen = pygame.display.set_mode(size)
 
+
 def terminate():
     pygame.quit()
     sys.exit()
+
 
 def start_screen():
     intro_text = ["ЗАСТАВКА", "",
@@ -47,13 +46,14 @@ def start_screen():
         pygame.display.flip()
         clock.tick(FPS)
 
+
 def show_level():
     player = None
     # группы спрайтов
     all_sprites = pygame.sprite.Group()
     tiles_group = pygame.sprite.Group()
     player_group = pygame.sprite.Group()
-    level = load_level('level1.txt')
+    level = load_level(input("Введите имя файла: "))
     player, player_x, player_y = generate_level(level, player_group, tiles_group, all_sprites)
 
     clock = pygame.time.Clock()
